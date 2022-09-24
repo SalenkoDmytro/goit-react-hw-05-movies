@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import Notiflix from 'notiflix';
-import Btn from '../Btn/Btn';
-// import ImageGallery from '';
-// import Loader from '';
+// import Btn from '../Btn/Btn';
 import Searchbar from '../Searchbar/Searchbar';
 import { Container } from './MoviesSearch.styled';
 import { fetchSearchQuery } from 'service/fetchAPI';
+import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
 
 export const MoviesSearch = () => {
   const [searchQuery, setSearchQuery] = useState(null);
@@ -25,29 +24,34 @@ export const MoviesSearch = () => {
           setTotalResults(total_results);
           setIsLoading(false);
         })
-        .catch(Notiflix.Notify.failure);
+        .catch(error =>
+          Notiflix.Notify.failure(`Something went wrong! ${error.message}`)
+        );
     }
   }, [searchQuery, page, isShown]);
 
   const onFormSubmit = async search => {
+    if (!search) return Notiflix.Notify.info('Please, enter some letters...');
     setSearchQuery(search);
     setPage(1);
     setMovies([]);
     setIsShown(true);
   };
 
-  const handleClick = async () => {
-    setPage(prevPage => prevPage + 1);
-  };
+  // const handleClick = async () => {
+  //   setPage(prevPage => prevPage + 1);
+  // };
 
   return (
     <Container>
       <Searchbar onSubmit={onFormSubmit} />
-      {/* {isShown && <ImageGallery data={movies} />}
-      {!isLoading && movies.length > 0 && movies.length < totalResults && (
+
+      {isShown && <MoviesGallery data={movies} />}
+
+      {/* {!isLoading && movies.length > 0 && movies.length < totalResults && (
         <Btn onClick={handleClick} />
       )}
-      {isLoading && <Loader />} */}
+      {isLoading && <Loader />}  */}
     </Container>
   );
 };

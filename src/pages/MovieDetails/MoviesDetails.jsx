@@ -1,9 +1,9 @@
 import { useFetchData } from 'hooks/useFetchMovie';
 import { Link, Outlet } from 'react-router-dom';
 import { fetchMoviesById } from 'service/fetchAPI';
-import { Box, LinkStyled, ImgBox } from './MoviesSubPage.styled';
+import { Box, LinkStyled, ImgBox } from './MoviesDetails.styled';
 
-export const MoviesSubPage = () => {
+export const MoviesDetails = () => {
   const movie = useFetchData(fetchMoviesById);
   return (
     <>

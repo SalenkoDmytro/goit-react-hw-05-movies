@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper, Form, Button, Label, Input } from './Searchbar.styled';
+import { Wrapper, Form, Button, Input } from './Searchbar.styled';
 
 const Searchbar = ({ onSubmit }) => {
   const [text, setText] = useState('');
@@ -23,9 +23,7 @@ const Searchbar = ({ onSubmit }) => {
   return (
     <Wrapper>
       <Form onSubmit={handleSubmit}>
-        <Button type="submit">
-          <Label>Search</Label>
-        </Button>
+        <Button type="submit">Search</Button>
 
         <Input
           onChange={handleChange}
@@ -33,7 +31,7 @@ const Searchbar = ({ onSubmit }) => {
           type="text"
           autoComplete="off"
           autoFocus
-          placeholder="Search movies"
+          placeholder="Enter movie"
         />
       </Form>
     </Wrapper>

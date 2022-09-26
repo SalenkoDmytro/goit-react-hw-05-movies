@@ -4,7 +4,6 @@ import Searchbar from '../Searchbar/Searchbar';
 import { Container } from './MoviesSearch.styled';
 import { fetchSearchQuery } from 'service/fetchAPI';
 import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
-import { useLocation, useSearchParams } from 'react-router-dom';
 
 export const MoviesSearch = ({ filterMovies }) => {
   const [searchQuery, setSearchQuery] = useState(null);

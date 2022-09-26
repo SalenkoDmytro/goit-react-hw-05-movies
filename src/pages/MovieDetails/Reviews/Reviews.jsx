@@ -3,6 +3,7 @@ import { fetchReviews } from 'service/fetchAPI';
 
 const Reviews = () => {
   const data = useFetchData(fetchReviews);
+  if (!data) return null;
   return (
     <>
       {data && data.results.length > 0 ? (

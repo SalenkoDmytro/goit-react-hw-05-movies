@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Notiflix from 'notiflix';
 import { fetchTrends } from 'service/fetchAPI';
 
 export const HomePage = () => {
@@ -7,7 +8,9 @@ export const HomePage = () => {
   useEffect(() => {
     fetchTrends()
       .then(({ results }) => setTrends(results))
-      .catch(console.log);
+      .catch(error =>
+        Notiflix.Notify.failure(`Something went wrong! ${error.message}`)
+      );
   }, []);
   return (
     <>

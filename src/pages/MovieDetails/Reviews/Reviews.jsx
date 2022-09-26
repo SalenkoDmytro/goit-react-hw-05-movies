@@ -1,7 +1,7 @@
 import { useFetchData } from 'hooks/useFetchMovie';
 import { fetchReviews } from 'service/fetchAPI';
 
-export const Reviews = () => {
+const Reviews = () => {
   const data = useFetchData(fetchReviews);
   return (
     <>
@@ -20,3 +20,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

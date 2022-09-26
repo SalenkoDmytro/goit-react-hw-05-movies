@@ -24,9 +24,7 @@ export const fetchReviews = async movie_id => {
   return data;
 };
 
-export const fetchSearchQuery = async (searchQuery, page) => {
-  const { data } = await axios.get(
-    `search/movie?query=${searchQuery}&page=${page}`
-  );
+export const fetchSearchQuery = async searchQuery => {
+  const { data } = await axios.get(`search/movie?query=${searchQuery}`);
   return data;
 };

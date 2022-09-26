@@ -1,8 +1,9 @@
 import { useFetchData } from 'hooks/useFetchMovie';
 import { fetchCast } from 'service/fetchAPI';
 
-export const Cast = () => {
+const Cast = () => {
   const data = useFetchData(fetchCast);
+  if (!data) return null;
   return (
     <ul>
       {data &&
@@ -11,7 +12,11 @@ export const Cast = () => {
             <img
               width="60px"
               alt={original_name}
-              src={`https://image.tmdb.org/t/p/w342/${profile_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${
+                profile_path === null
+                  ? 'kZobKKPhs2vhuXu9SWvyg1u3zDM.jpg'
+                  : profile_path
+              }`}
               loading="lazy"
             />
             <p>{original_name}</p>
@@ -21,3 +26,5 @@ export const Cast = () => {
     </ul>
   );
 };
+
+export default Cast;
